@@ -4,16 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:background="#284B62"
+    tools:context=".LoginActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello Login!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/login_logo_img"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="50dp"
+        android:contentDescription="@string/split_logo_dcp"
+        app:layout_constraintBottom_toTopOf="@+id/ConstraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/split_logo" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:background="@drawable/rounded_layout_bg"
+        android:foregroundGravity="center"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/login_form_lyt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="50dp"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:textAlignment="center"
+            app:flow_horizontalAlign="center"
+            app:flow_verticalAlign="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/login_form_txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_form_txt1"
+                android:textAlignment="center"
+                android:textSize="34sp" />
+
+            <EditText
+                android:id="@+id/login_form_email"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:autofillHints="true"
+                android:ems="10"
+                android:hint="@string/login_form_txt2"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/login_form_psswd"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:autofillHints="true"
+                android:ems="10"
+                android:hint="@string/login_form_txt3"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/login_form_btn"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:text="@string/login_form_btn1"
+                android:textAlignment="center" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_form_txt1">Sign in</string>
+    <string name="login_form_txt2">Email</string>
+    <string name="login_form_txt3">Password</string>
+    <string name="login_form_btn1">Submit</string>
+</resources>
