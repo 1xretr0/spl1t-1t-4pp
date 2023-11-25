@@ -10,18 +10,17 @@ import android.os.PersistableBundle
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
     private lateinit var myPreferences : SharedPreferences
-    private var signedUser: User? = null
+    // private lateinit var signedUser: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
         myPreferences = getSharedPreferences("Datos", MODE_PRIVATE)
-
         val savedUserId = myPreferences.getInt("user_id", 0)
-        if (savedUserId != 0) {
-            signedUser = User(savedUserId)
-        }
+        println(savedUserId)
+
+        val signedUser = if (savedUserId != 0) User(savedUserId) else null
 
         val timer = Thread {
             try {
@@ -29,12 +28,12 @@ class SplashActivity : AppCompatActivity() {
             } catch (e: InterruptedException) {
                 e.printStackTrace()
             } finally {
-                if (signedUser != null)
-                    // val intent = Intent(this, MainActivity::class.java)
-                else
-                    // val intent = Intent(this, LoginActivity::class.java)
-
-                startActivity(intent)
+                if (signedUser != null) {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                else {
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
             }
         }
 
