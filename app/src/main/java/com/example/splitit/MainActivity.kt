@@ -2,35 +2,47 @@ package com.example.splitit
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.splitit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var sharedPref : SharedPreferences
-//    private lateinit var signedUser : User
+    private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        replaceFragment(HomeFragment())
 
-        sharedPref = getSharedPreferences(
-            R.string.preference_file_key.toString(),
-            MODE_PRIVATE
-        )
-        val signedUserId = sharedPref.getInt(Database.ID_USER, 0)
-        println("user id at main: $signedUserId")
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.home_menu_itm -> replaceFragment(HomeFragment())
+                R.id.new_menu_itm -> replaceFragment(NewFragment())
+                R.id.profile_menu_itm -> replaceFragment(ProfileFragment())
+                else -> {
 
-        val userIdTxt = findViewById<TextView>(R.id.user_id_txt)
-        userIdTxt.text = signedUserId.toString()
-//
-        val signOutBtn = findViewById<Button>(R.id.signout_btn)
-        signOutBtn.setOnClickListener {
-            with (sharedPref.edit()) {
-                remove(Database.ID_USER)
-                apply()
+                }
             }
-            println("signed userid removed")
+            true
         }
+
+//        setContentView(R.layout.activity_main)
+//
+//        sharedPref = getSharedPreferences(
+//            R.string.preference_file_key.toString(),
+//            MODE_PRIVATE
+//        )
+//        val signedUserId = sharedPref.getInt(Database.ID_USER, 0)
+//        println("user id at main: $signedUserId")
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+
+        fragmentTransaction.replace(R.id.main_frame_lyt, fragment)
+        fragmentTransaction.commit()
     }
 }
