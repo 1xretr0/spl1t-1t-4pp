@@ -58,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/login_form_txt1"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 android:textSize="34sp" />
 
             <EditText
@@ -67,7 +68,9 @@
                 android:autofillHints="true"
                 android:ems="10"
                 android:hint="@string/login_form_txt2"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textColor="#000000"
+                android:textColorHint="#2C2C2C" />
 
             <EditText
                 android:id="@+id/login_form_psswd"
@@ -76,7 +79,9 @@
                 android:autofillHints="true"
                 android:ems="10"
                 android:hint="@string/login_form_txt3"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:textColorHint="#2C2C2C" />
 
             <Button
                 android:id="@+id/login_form_btn"

@@ -25,7 +25,6 @@ android {
     }
 
     buildFeatures {
-
         viewBinding = true
     }
 

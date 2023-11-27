@@ -10,4 +10,8 @@
     <string name="preference_file_key" translatable="false">i4400PTNRf</string>
     <string name="login_form_success">¡Inicio de sesión correcto!</string>
     <string name="signout_btn">Cerrar sesión</string>
+    <string name="home_menu_itm">Inicio</string>
+    <string name="new_menu_itm">Nuevo Split</string>
+    <string name="profile_menu_itm">Perfil</string>
+    <string name="home_fragment_txt1">Splits Recientes</string>
 </resources>

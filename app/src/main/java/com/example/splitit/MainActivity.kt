@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.new_menu_itm -> replaceFragment(NewFragment())
                 R.id.profile_menu_itm -> replaceFragment(ProfileFragment())
                 else -> {
-
+                    /* TODO: else not yet implemented */
                 }
             }
             true
