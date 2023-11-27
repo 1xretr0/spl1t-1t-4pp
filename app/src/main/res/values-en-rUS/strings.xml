@@ -4,4 +4,7 @@
     <string name="login_form_txt2">Email</string>
     <string name="login_form_txt3">Password</string>
     <string name="login_form_btn1">Submit</string>
+    <string name="login_form_not_found">User not found</string>
+    <string name="login_form_success">Signed successfully!</string>
+    <string name="signout_btn">Sign out</string>
 </resources>

@@ -2,25 +2,19 @@ package com.example.splitit
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
+import androidx.appcompat.app.AppCompatActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
-    private lateinit var myPreferences : SharedPreferences
-    // private lateinit var signedUser: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        myPreferences = getSharedPreferences("Datos", MODE_PRIVATE)
-        val savedUserId = myPreferences.getInt("user_id", 0)
-        println(savedUserId)
-
-        val signedUser = if (savedUserId != 0) User(savedUserId) else null
+        val myPreferences = getSharedPreferences(R.string.preference_file_key.toString(), MODE_PRIVATE)
+        val savedUserId = myPreferences.getInt(Database.ID_USER, 0)
+        println("saved user id: $savedUserId")
 
         val timer = Thread {
             try {
@@ -28,32 +22,12 @@ class SplashActivity : AppCompatActivity() {
             } catch (e: InterruptedException) {
                 e.printStackTrace()
             } finally {
-                if (signedUser != null) {
+                if (savedUserId != 0)
                     startActivity(Intent(this, MainActivity::class.java))
-                }
-                else {
+                else
                     startActivity(Intent(this, LoginActivity::class.java))
-                }
             }
         }
-
         timer.start()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-        // var editor = myPreferences.edit()
-
-
-    }
-
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
-        // var editor = myPreferences.edit()
     }
 }

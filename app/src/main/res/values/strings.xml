@@ -6,4 +6,8 @@
     <string name="login_form_txt2">Correo electrónico</string>
     <string name="login_form_txt3">Contraseña</string>
     <string name="login_form_btn1">Iniciar</string>
+    <string name="login_form_not_found">Usuario no encontrado</string>
+    <string name="preference_file_key" translatable="false">i4400PTNRf</string>
+    <string name="login_form_success">¡Inicio de sesión correcto!</string>
+    <string name="signout_btn">Cerrar sesión</string>
 </resources>

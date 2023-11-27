@@ -1,5 +1,6 @@
 package com.example.splitit
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -7,10 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper
 class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     override fun onCreate(db: SQLiteDatabase) {
         // CREATE USERS TABLE
-        db.execSQL("CREATE TABLE si_users(id integer primary key autoincrement, name varchar, lastname varchar, email varchar, password varchar)")
+        db.execSQL("CREATE TABLE si_users(id_user integer primary key autoincrement, name varchar, lastname varchar, email varchar, password varchar)")
 
-        /*val usersCV = ContentValues() // INSERT INTO USERS TABLE
-        usersCV.put(NAME, "Mauricio")
+        val usersCV = ContentValues() // INSERT INTO USERS TABLE
+        /*usersCV.put(NAME, "Mauricio")
         usersCV.put(LASTNAME, "Solano Nájera")
         usersCV.put(EMAIL, "mau.solano@gmail.com")
         usersCV.put(PASSWORD, "holamundo123")
@@ -20,13 +21,13 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         usersCV.put(LASTNAME, "Orihuela Otero")
         usersCV.put(EMAIL, "andres.orihuela@gmail.com")
         usersCV.put(PASSWORD, "andres123")
-        db?.insert("si_users", NAME, usersCV)
+        db?.insert("si_users", NAME, usersCV)*/
 
         usersCV.put(NAME, "Sebastian")
         usersCV.put(LASTNAME, "Moran Hernandez")
         usersCV.put(EMAIL, "sebas.moran@gmail.com")
         usersCV.put(PASSWORD, "everlong123")
-        db?.insert("si_users", NAME, usersCV)*/
+        db.insert("si_users", NAME, usersCV)
 
         // CREATE FRIENDS TABLE
         db.execSQL("CREATE TABLE si_friends(id_friend integer primary key autoincrement, id_user1 int, id_user2 int, status varchar, FOREIGN KEY (id_user1) REFERENCES si_users(id), FOREIGN KEY (id_user2) REFERENCES si_users(id))")
@@ -134,8 +135,8 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         //Users Table
         const val NAME ="name"
         const val LASTNAME ="lastname"
-        const val EMAIL ="lastname"
-        const val PASSWORD ="lastname"
+        const val EMAIL ="email"
+        const val PASSWORD ="password"
 
         //Friends Table
         const val ID_FRIEND ="id_friend"  //PK
@@ -155,7 +156,12 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val INDIVIDUAL_AMOUNT ="individual_amount"
     }
 
-    fun getUserFromDB(projection: Array<String>, selection: String, selectionArgs: Array<String>, order: String? = null) {
+    fun getUserFromDB(
+        projection: Array<String>? = null,
+        selection: String? = null,
+        selectionArgs: Array<String>? = null,
+        order: String? = null): MutableList<Long>
+    {
         val db = this.readableDatabase
         val cursor = db.query(
             "si_users",
@@ -167,13 +173,16 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             order
         )
 
-        val itemIds = mutableListOf<Long>()
+        val result = mutableListOf<Long>()
         with(cursor) {
             while (moveToNext()) {
-                val itemId = getLong(getColumnIndexOrThrow(ID_USER))
-                itemIds.add(itemId)
+                result.add(
+                    getLong(getColumnIndexOrThrow(ID_USER))
+                )
             }
         }
         cursor.close()
+
+        return result
     }
 }
