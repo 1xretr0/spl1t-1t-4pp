@@ -60,6 +60,7 @@ class LoginActivity : AppCompatActivity() {
                     apply()
                 }
 
+
                 // SHOW MAIN LAYOUT
                 val timer = Thread {
                     try {

@@ -28,14 +28,13 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-//        setContentView(R.layout.activity_main)
-//
-//        sharedPref = getSharedPreferences(
-//            R.string.preference_file_key.toString(),
-//            MODE_PRIVATE
-//        )
-//        val signedUserId = sharedPref.getInt(Database.ID_USER, 0)
-//        println("user id at main: $signedUserId")
+        sharedPref = getSharedPreferences(
+            R.string.preference_file_key.toString(),
+            MODE_PRIVATE
+        )
+        val signedUserId = sharedPref.getInt(Database.ID_USER, 0)
+        println("user id at main: $signedUserId")
+        // TODO: wip
     }
 
     private fun replaceFragment(fragment: Fragment) {
