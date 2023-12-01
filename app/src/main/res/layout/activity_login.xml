@@ -101,7 +101,7 @@
             <Button
                 android:id="@+id/login_form_btn"
                 android:layout_width="266dp"
-                android:layout_height="48dp"
+                android:layout_height="50dp"
                 android:fontFamily="@font/righteous"
                 android:text="@string/login_form_btn1"
                 android:textAlignment="center"
