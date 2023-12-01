@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">Split It</string>
     <string name="dummy_text" translatable="false">Xd xd</string>
     <string name="split_logo_dcp" translatable="false">App logo</string>
-    <string name="login_form_txt1">Inicia sesión</string>
+    <string name="login_form_txt1">Iniciar sesión</string>
     <string name="login_form_txt2">Correo electrónico</string>
     <string name="login_form_txt3">Contraseña</string>
     <string name="login_form_btn1">Iniciar</string>
