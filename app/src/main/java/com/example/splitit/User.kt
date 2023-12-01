@@ -3,23 +3,29 @@ package com.example.splitit
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
-import kotlin.properties.Delegates
 
+class User(context: Context, id: Int) {
+    private var name : String
+    private var email : String
+    private var id : Int = 0
 
-class User {
-    private lateinit var name : String
-    private lateinit var email : String
-    private var id by Delegates.notNull<Int>()
+    private var sharedPref : SharedPreferences
 
-    private lateinit var context : Context
-    private lateinit var sharedPref : SharedPreferences
-
-    constructor(id: Int) {
+    init {
+        this.sharedPref = context.
+            getSharedPreferences(
+                R.string.preference_file_key.toString(),
+                AppCompatActivity.MODE_PRIVATE
+            )
         this.id = id
         this.name = "sobas"
         this.email = "sobasemail"
     }
 
+    /**
+     * getter method for user data
+     * @return List containing user name and email
+     */
     fun getUserData() : List<String> {
         return listOf(
             this.name,
@@ -27,15 +33,12 @@ class User {
         )
     }
 
-//    fun signOutUser() : Boolean {
-//        sharedPref = context.getSharedPreferences(
-//            R.string.preference_file_key.toString(),
-//            AppCompatActivity.MODE_PRIVATE
-//        )
-//        with (sharedPref.edit()) {
-//            remove(Database.ID_USER)
-//            apply()
-//        }
-//        return true
-//    }
+    fun signOutUser(): Boolean {
+        with (sharedPref.edit()) {
+            remove(Database.ID_USER)
+            apply()
+            println("removed shared pref")
+        }
+        return true
+    }
 }
