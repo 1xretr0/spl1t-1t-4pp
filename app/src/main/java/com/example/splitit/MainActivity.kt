@@ -16,11 +16,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         replaceFragment(HomeFragment())
 
+        sharedPref = getSharedPreferences(
+            R.string.preference_file_key.toString(),
+            MODE_PRIVATE
+        )
+
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.home_menu_itm -> replaceFragment(HomeFragment())
                 R.id.new_menu_itm -> replaceFragment(NewFragment())
-                R.id.profile_menu_itm -> replaceFragment(ProfileFragment())
+                R.id.profile_menu_itm -> {
+                    replaceFragment(ProfileFragment())
+                    // ProfileFragment.newInstance(sharedPref.getInt(Database.ID_USER, 0))
+                }
                 else -> {
                     /* TODO: else not yet implemented */
                 }
@@ -28,13 +36,8 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        sharedPref = getSharedPreferences(
-            R.string.preference_file_key.toString(),
-            MODE_PRIVATE
-        )
         val signedUserId = sharedPref.getInt(Database.ID_USER, 0)
         println("user id at main: $signedUserId")
-        // TODO: wip
     }
 
     private fun replaceFragment(fragment: Fragment) {

@@ -10,29 +10,32 @@ class User {
     private lateinit var name : String
     private lateinit var email : String
     private var id by Delegates.notNull<Int>()
-    public lateinit var loggedUser : User
 
     private lateinit var context : Context
     private lateinit var sharedPref : SharedPreferences
 
-    constructor(context: Context, id: Int) {
-        this.loggedUser = User(context, id)
+    constructor(id: Int) {
+        this.id = id
+        this.name = "sobas"
+        this.email = "sobasemail"
     }
 
-    constructor(context: Context, name: String, email: String) {
-        this.name = name
-        this.email = email
-    }
-
-    fun signOutUser() : Boolean {
-        sharedPref = context.getSharedPreferences(
-            R.string.preference_file_key.toString(),
-            AppCompatActivity.MODE_PRIVATE
+    fun getUserData() : List<String> {
+        return listOf(
+            this.name,
+            this.email
         )
-        with (sharedPref.edit()) {
-            remove(Database.ID_USER)
-            apply()
-        }
-        return true
     }
+
+//    fun signOutUser() : Boolean {
+//        sharedPref = context.getSharedPreferences(
+//            R.string.preference_file_key.toString(),
+//            AppCompatActivity.MODE_PRIVATE
+//        )
+//        with (sharedPref.edit()) {
+//            remove(Database.ID_USER)
+//            apply()
+//        }
+//        return true
+//    }
 }
