@@ -1,9 +1,7 @@
 <resources>
-    //App
     <string name="app_name" translatable="false">Split It</string>
     <string name="dummy_text" translatable="false">Xd xd</string>
     <string name="split_logo_dcp" translatable="false">App logo</string>
-    //Login
     <string name="login_form_txt1">Iniciar sesión</string>
     <string name="login_form_txt2">Correo electrónico</string>
     <string name="login_form_txt3">Contraseña</string>
@@ -11,14 +9,9 @@
     <string name="login_form_not_found">Usuario no encontrado</string>
     <string name="preference_file_key" translatable="false">i4400PTNRf</string>
     <string name="login_form_success">¡Inicio de sesión correcto!</string>
-    //Home
+    <string name="signout_btn">Cerrar sesión</string>
     <string name="home_menu_itm">Inicio</string>
     <string name="new_menu_itm">Nuevo Split</string>
+    <string name="profile_menu_itm">Perfil</string>
     <string name="home_fragment_txt1">Splits Recientes</string>
-    //Mi Perfil
-    <string name="profile_menu_itm">Mi Perfil</string>
-    <string name="profile_menu_txt1">Escanear código</string>
-    <string name="profile_menu_txt2">Mostrar mi código</string>
-    <string name="signout_btn">Cerrar sesión</string>
-
 </resources>
