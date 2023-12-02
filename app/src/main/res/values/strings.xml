@@ -14,4 +14,6 @@
     <string name="new_menu_itm">Nuevo Split</string>
     <string name="profile_menu_itm">Perfil</string>
     <string name="home_fragment_txt1">Splits Recientes</string>
+    <string name="profile_menu_txt1">Escanear Código</string>
+    <string name="profile_menu_txt2">Mostrar mi código</string>
 </resources>
