@@ -11,4 +11,6 @@
     <string name="new_menu_itm">New Split</string>
     <string name="profile_menu_itm">Profile</string>
     <string name="home_fragment_txt1">Recent Splits</string>
+    <string name="profile_menu_txt1">Scan code</string>
+    <string name="profile_menu_txt2">Show my code</string>
 </resources>

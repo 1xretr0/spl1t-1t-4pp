@@ -8,31 +8,161 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:backgroundTint="@color/background">
 
-        <Button
-            android:id="@+id/signout_btn"
+        <TextView
+            android:id="@+id/profile_menu_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="158dp"
-            android:layout_marginTop="356dp"
-            android:layout_marginEnd="159dp"
-            android:text="@string/signout_btn"
+            android:fontFamily="@font/righteous"
+            android:text="@string/profile_menu_itm"
+            android:textAlignment="center"
+            android:textColor="@color/complementary"
+            android:textSize="45sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.033"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.049" />
+
+        <ImageView
+            android:id="@+id/profile_view_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/profile_menu_itm"
+            android:src="@drawable/profile_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.197" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="153dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginEnd="154dp"
-            android:text="Profile Fragment"
+            android:layout_width="243dp"
+            android:layout_height="34dp"
+            android:fontFamily="@font/raleway"
+            android:text="[Aquí va el usuario]"
+            android:textAlignment="center"
             android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.437" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="243dp"
+            android:layout_height="34dp"
+            android:fontFamily="@font/raleway"
+            android:text="[Aquí va el correo]"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.499" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="289dp"
+            android:layout_height="263dp"
+            android:background="@drawable/rounded_layout_bg"
+            android:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.854">
+
+            <Button
+                android:id="@+id/signout_btn7"
+                android:layout_width="275dp"
+                android:layout_height="79dp"
+                android:backgroundTint="#00FFFFFF"
+                android:contentDescription="@string/profile_menu_txt1"
+                android:text="@string/profile_menu_txt1"
+                android:textColor="@color/complementary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.529"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.02" />
+
+            <Button
+                android:id="@+id/profile_menu_txt2"
+                android:layout_width="275dp"
+                android:layout_height="79dp"
+                android:backgroundTint="#00FFFFFF"
+                android:text="@string/profile_menu_txt2"
+                android:textColor="@color/complementary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/signout_btn7"
+                app:layout_constraintVertical_bias="0.089" />
+
+            <Button
+                android:id="@+id/signout_btn"
+                android:layout_width="275dp"
+                android:layout_height="79dp"
+                android:backgroundTint="#00FFFFFF"
+                android:text="@string/signout_btn"
+                android:textColor="@color/complementary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.978" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:contentDescription="@string/profile_menu_txt1"
+                android:src="@drawable/scan_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/signout_btn7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.042"
+                app:layout_constraintStart_toStartOf="@+id/signout_btn7"
+                app:layout_constraintTop_toTopOf="@+id/signout_btn7"
+                app:layout_constraintVertical_bias="0.514" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="44dp"
+                android:layout_height="45dp"
+                android:contentDescription="@string/profile_menu_txt2"
+                android:src="@drawable/qr_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_menu_txt2"
+                app:layout_constraintEnd_toEndOf="@+id/profile_menu_txt2"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toStartOf="@+id/profile_menu_txt2"
+                app:layout_constraintTop_toTopOf="@+id/profile_menu_txt2" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="44dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="9dp"
+                android:contentDescription="@string/signout_btn"
+                android:src="@drawable/signout_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/signout_btn"
+                app:layout_constraintEnd_toEndOf="@+id/signout_btn"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toStartOf="@+id/signout_btn"
+                app:layout_constraintTop_toBottomOf="@+id/profile_menu_txt2"
+                app:layout_constraintVertical_bias="0.735" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
