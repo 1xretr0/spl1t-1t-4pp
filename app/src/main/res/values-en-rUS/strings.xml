@@ -14,4 +14,7 @@
     <string name="profile_menu_txt1">Scan Code</string>
     <string name="profile_menu_txt2">Show My Code</string>
     <string name="home_split_txt1">Bill:</string>
+    <string name="new_split_txt1">New Split</string>
+    <string name="new_split_txt2">Split with:</string>
+    <string name="new_split_txt3">Add friends:</string>
 </resources>
