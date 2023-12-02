@@ -13,4 +13,5 @@
     <string name="home_fragment_txt1">Recent Splits</string>
     <string name="profile_menu_txt1">Scan Code</string>
     <string name="profile_menu_txt2">Show My Code</string>
+    <string name="home_split_txt1">Bill:</string>
 </resources>
