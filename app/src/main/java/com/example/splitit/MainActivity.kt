@@ -16,11 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         replaceFragment(HomeFragment())
 
-        sharedPref = getSharedPreferences(
-            R.string.preference_file_key.toString(),
-            MODE_PRIVATE
-        )
-
+        // NAVIGATION BAR
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.home_menu_itm -> replaceFragment(HomeFragment())
@@ -36,6 +32,11 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        // SHARED PREFERENCES
+        sharedPref = getSharedPreferences(
+            R.string.preference_file_key.toString(),
+            MODE_PRIVATE
+        )
         val signedUserId = sharedPref.getInt(Database.ID_USER, 0)
         println("user id at main: $signedUserId")
     }

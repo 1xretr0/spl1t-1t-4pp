@@ -83,7 +83,7 @@
             app:layout_constraintVertical_bias="0.854">
 
             <Button
-                android:id="@+id/signout_btn7"
+                android:id="@+id/profile_menu_btn1"
                 android:layout_width="275dp"
                 android:layout_height="79dp"
                 android:backgroundTint="#00FFFFFF"
@@ -107,7 +107,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signout_btn7"
+                app:layout_constraintTop_toBottomOf="@+id/profile_menu_btn1"
                 app:layout_constraintVertical_bias="0.089" />
 
             <Button
@@ -129,11 +129,11 @@
                 android:layout_height="44dp"
                 android:contentDescription="@string/profile_menu_txt1"
                 android:src="@drawable/scan_icon"
-                app:layout_constraintBottom_toBottomOf="@+id/signout_btn7"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_menu_btn1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.042"
-                app:layout_constraintStart_toStartOf="@+id/signout_btn7"
-                app:layout_constraintTop_toTopOf="@+id/signout_btn7"
+                app:layout_constraintStart_toStartOf="@+id/profile_menu_btn1"
+                app:layout_constraintTop_toTopOf="@+id/profile_menu_btn1"
                 app:layout_constraintVertical_bias="0.514" />
 
             <ImageView

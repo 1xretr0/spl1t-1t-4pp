@@ -29,10 +29,12 @@ class ProfileFragment : Fragment() {
         val loggedUser = User(requireActivity(), sharedPref.getInt(Database.ID_USER, 0))
         println("User obj at profile frag: ${loggedUser.getUserData()}")
 
+        // SIGN OUT BUTTON
         val signoutBtn = view.findViewById<Button>(R.id.signout_btn)
         signoutBtn.setOnClickListener {
             println("clicked sign out btn")
             loggedUser.signOutUser()
+
             startActivity(Intent(requireActivity(), LoginActivity::class.java))
         }
 

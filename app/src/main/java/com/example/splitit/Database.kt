@@ -11,17 +11,17 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.execSQL("CREATE TABLE si_users(id_user integer primary key autoincrement, name varchar, lastname varchar, email varchar, password varchar)")
 
         val usersCV = ContentValues() // INSERT INTO USERS TABLE
-        /*usersCV.put(NAME, "Mauricio")
+        usersCV.put(NAME, "Mauricio")
         usersCV.put(LASTNAME, "Solano Nájera")
         usersCV.put(EMAIL, "mau.solano@gmail.com")
         usersCV.put(PASSWORD, "holamundo123")
-        db?.insert("si_users", NAME, usersCV)
+        db.insert("si_users", NAME, usersCV)
 
         usersCV.put(NAME, "Andres")
         usersCV.put(LASTNAME, "Orihuela Otero")
         usersCV.put(EMAIL, "andres.orihuela@gmail.com")
         usersCV.put(PASSWORD, "andres123")
-        db?.insert("si_users", NAME, usersCV)*/
+        db.insert("si_users", NAME, usersCV)
 
         usersCV.put(NAME, "Sebastian")
         usersCV.put(LASTNAME, "Moran Hernandez")

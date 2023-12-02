@@ -10,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar
 class LoginActivity : AppCompatActivity() {
     private lateinit var emailEdt : EditText
     private lateinit var passwdEdt : EditText
+    private lateinit var loginBtn : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
         emailEdt = findViewById(R.id.login_form_email)
         passwdEdt = findViewById(R.id.login_form_psswd)
 
-        val loginBtn = findViewById<Button>(R.id.login_form_btn)
+        loginBtn = findViewById<Button>(R.id.login_form_btn)
         loginBtn.setOnClickListener {
             println("login submitted")
             val dbHelper = Database(this)
@@ -33,46 +34,58 @@ class LoginActivity : AppCompatActivity() {
             println("found userId: $userId")
 
             if (userId.isEmpty()) {
-                // FAILED LOGIN ATTEMPT
-                val snackbar = Snackbar.make(
-                    findViewById(android.R.id.content),
-                    R.string.login_form_not_found,
-                    Snackbar.LENGTH_SHORT
-                )
-                snackbar.show()
+                this.failedLogin()
             }
             else {
-                // SUCCESSFUL LOGIN
-                val snackbar = Snackbar.make(
-                    findViewById(android.R.id.content),
-                    R.string.login_form_success,
-                    Snackbar.LENGTH_SHORT
-                )
-                snackbar.show()
-
-                // SAVE FOUND USER ID TO SHARED PREFS
-                val sharedPref = getSharedPreferences(
-                    R.string.preference_file_key.toString(),
-                    MODE_PRIVATE
-                )
-                with (sharedPref.edit()) {
-                    putInt(Database.ID_USER, userId[0].toInt())
-                    apply()
-                }
-
-
-                // SHOW MAIN LAYOUT
-                val timer = Thread {
-                    try {
-                        Thread.sleep(1000)
-                    } catch (e: InterruptedException) {
-                        e.printStackTrace()
-                    } finally {
-                        startActivity(Intent(this, MainActivity::class.java))
-                    }
-                }
-                timer.start()
+                this.correctLogin(userId)
             }
         }
+    }
+
+    private fun failedLogin() {
+        val snackbar = Snackbar.make(
+            findViewById(android.R.id.content),
+            R.string.login_form_not_found,
+            Snackbar.LENGTH_SHORT
+        )
+        snackbar.show()
+
+        this.emailEdt.text.clear()
+        this.passwdEdt.text.clear()
+    }
+
+    private fun correctLogin(userId : MutableList<Long>) {
+        // SUCCESSFUL LOGIN
+        loginBtn.isEnabled = false
+        loginBtn.isClickable = false
+
+        val snackbar = Snackbar.make(
+            findViewById(android.R.id.content),
+            R.string.login_form_success,
+            Snackbar.LENGTH_SHORT
+        )
+        snackbar.show()
+
+        // SAVE FOUND USER ID TO SHARED PREFS
+        val sharedPref = getSharedPreferences(
+            R.string.preference_file_key.toString(),
+            MODE_PRIVATE
+        )
+        with (sharedPref.edit()) {
+            putInt(Database.ID_USER, userId[0].toInt())
+            apply()
+        }
+
+        // SHOW MAIN LAYOUT
+        val timer = Thread {
+            try {
+                Thread.sleep(1000)
+            } catch (e: InterruptedException) {
+                e.printStackTrace()
+            } finally {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+        }
+        timer.start()
     }
 }
