@@ -14,14 +14,14 @@
     <string name="new_menu_itm">Nuevo Split</string>
     <string name="profile_menu_itm">Perfil</string>
     <string name="home_fragment_txt1">Splits Recientes</string>
-    <string name="profile_menu_txt2">Añadir amigo</string>
+    <string name="profile_btn2">Añadir amigo</string>
     <string name="home_split_txt1">Monto:</string>
     <string name="main_snackbar_shake">¡Crear nuevo split!</string>
-    <string name="add_split_txt1">Crear split</string>
-    <string name="add_split_txt2">Total</string>
-    <string name="add_split_txt3">Dividir con:</string>
-    <string name="add_split_txt5">Añadir contacto</string>
+    <string name="new_split_txt1">Crear split</string>
+    <string name="new_split_txt2">Total</string>
+    <string name="add_split_txt3">Dividir entre:</string>
     <string name="add_split_btn2" translatable="false">+</string>
     <string name="add_aplit_paybtn">Pagar</string>
-    <string name="new_split_txt3">Añadir amigos</string>
+    <string name="new_split_edt2">Añadir amigos</string>
+    <string name="profile_btn1">Copiar mi id de usuario</string>
 </resources>
