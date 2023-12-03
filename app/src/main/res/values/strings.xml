@@ -16,6 +16,7 @@
     <string name="home_fragment_txt1">Splits Recientes</string>
     <string name="profile_menu_txt2">Añadir amigo</string>
     <string name="home_split_txt1">Monto:</string>
+    <string name="main_snackbar_shake">¡Crear nuevo split!</string>
     <string name="new_split_txt1">Crear Split</string>
     <string name="new_split_txt2">Dividir con:</string>
     <string name="new_split_txt3">Añadir contactos</string>

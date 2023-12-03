@@ -48,8 +48,8 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         friendsCV.put(STATUS, "waiting") //Not friends yet
         db?.insert("si_friends", ID_USER1, friendsCV) */
         
-        //CREATE PAYMENTS TABLE
-        db.execSQL("CREATE TABLE si_splits(id_split integer primary key autoincrement, id_user int, total decimal, date date, FOREIGN KEY (id_user) REFERENCES si_users(id))")
+        //CREATE SPLITS TABLE
+        db.execSQL("CREATE TABLE si_splits(id_split integer primary key autoincrement, id_user int, store_name varchar, total decimal, date date, FOREIGN KEY (id_user) REFERENCES si_users(id))")
         
         /*val splitsCV = ContentValues() //INSERT VALUES INTO PAYMENTS TABLE
         splitsCV.put(ID_USER, 1)
@@ -147,6 +147,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         // Splits TABLE
         const val ID_SPLIT ="id_split" //PK
         const val ID_USER ="id_user" //FK from users
+        const val STORE_NAME = "store_name"
         const val TOTAL ="total" // Total Amount
         const val DATE ="date"
 
@@ -178,6 +179,36 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             while (moveToNext()) {
                 result.add(
                     getLong(getColumnIndexOrThrow(ID_USER))
+                )
+            }
+        }
+        cursor.close()
+
+        return result
+    }
+
+    fun getSplitsFromDB(
+        projection: Array<String>? = null,
+        selection: String? = null,
+        selectionArgs: Array<String>? = null,
+        order: String? = null) : MutableList<Long>
+    {
+        val db = this.readableDatabase
+        val cursor = db.query(
+            "si_splits",
+            projection,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            order
+        )
+
+        val result = mutableListOf<Long>()
+        with(cursor) {
+            while (moveToNext()) {
+                result.add(
+                    getLong(getColumnIndexOrThrow(ID_SPLIT))
                 )
             }
         }

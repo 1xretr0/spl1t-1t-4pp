@@ -46,6 +46,7 @@
             android:id="@+id/profile_view_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:contentDescription="@string/profile_menu_itm"
             android:src="@drawable/profile_icon"
             app:layout_constraintBottom_toTopOf="@+id/textView"

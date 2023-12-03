@@ -13,6 +13,7 @@
     <string name="home_fragment_txt1">Recent Splits</string>
     <string name="profile_menu_txt2">Add Friend</string>
     <string name="home_split_txt1">Bill:</string>
+    <string name="main_snackbar_shake">Create new split!</string>
     <string name="new_split_txt1">New Split</string>
     <string name="new_split_txt2">Split with:</string>
     <string name="new_split_txt3">Add friends</string>

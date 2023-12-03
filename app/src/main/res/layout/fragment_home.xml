@@ -24,13 +24,13 @@
             android:textColor="@color/complementary"
             android:textColorHint="@color/complementary"
             android:textSize="40sp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintBottom_toTopOf="@+id/splits_linear_lyt1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/splits_linear_lyt1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
