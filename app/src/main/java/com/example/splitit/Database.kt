@@ -157,11 +157,22 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val INDIVIDUAL_AMOUNT ="individual_amount"
     }
 
+    // GET METHODS
+    /**
+     * custom data class to return obtained records from the query
+     */
+    data class UserRecord(
+        var idUser: String? = null,
+        var name: String? = null,
+        var lastname: String? = null,
+        var email: String? = null,
+        var password: String? = null
+    )
     fun getUserFromDB(
         projection: Array<String>? = null,
         selection: String? = null,
         selectionArgs: Array<String>? = null,
-        order: String? = null): MutableList<String>
+        order: String? = null): List<UserRecord>
     {
         val db = this.readableDatabase
         val cursor = db.query(
@@ -174,32 +185,32 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             order
         )
 
-        val result = mutableListOf<String>()
+        val result = mutableListOf<UserRecord>()
         with(cursor) {
             while (moveToNext()) {
                 if (projection != null) {
+                    val userRecord = UserRecord()
                     for (field in projection) {
-                        result.add(
-                            getString(getColumnIndexOrThrow(field))
-                        )
+                        when (field) {
+                            ID_USER -> userRecord.idUser = getString(getColumnIndexOrThrow(ID_USER))
+                            NAME -> userRecord.name = getString(getColumnIndexOrThrow(NAME))
+                            LASTNAME -> userRecord.lastname = getString(getColumnIndexOrThrow(LASTNAME))
+                            EMAIL -> userRecord.email = getString(getColumnIndexOrThrow(EMAIL))
+                            PASSWORD -> userRecord.password = getString(getColumnIndexOrThrow(PASSWORD))
+                            else -> println("entered ELSE in UserRecord when exp")
+                        }
                     }
+                    result.add(userRecord)
                 }
                 else {
-                    result.add(
-                        getString(getColumnIndexOrThrow(ID_USER))
+                    val userRecord = UserRecord(
+                        getString(getColumnIndexOrThrow(ID_USER)),
+                        getString(getColumnIndexOrThrow(NAME)),
+                        getString(getColumnIndexOrThrow(LASTNAME)),
+                        getString(getColumnIndexOrThrow(EMAIL)),
+                        getString(getColumnIndexOrThrow(PASSWORD)),
                     )
-                    result.add(
-                        getString(getColumnIndexOrThrow(NAME))
-                    )
-                    result.add(
-                        getString(getColumnIndexOrThrow(LASTNAME))
-                    )
-                    result.add(
-                        getString(getColumnIndexOrThrow(EMAIL))
-                    )
-                    result.add(
-                        getString(getColumnIndexOrThrow(PASSWORD))
-                    )
+                    result.add(userRecord)
                 }
             }
         }
@@ -208,11 +219,22 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         return result
     }
 
+    /**
+     * custom data class to return obtained records from the query
+     */
+    data class SplitRecord(
+        var idSplit: String? = null,
+        var idUser: String? = null,
+        var storeName: String? = null,
+        var total: String? = null,
+        var status: String? = null,
+        var date: String? = null
+    )
     fun getSplitsFromDB(
         projection: Array<String>? = null,
         selection: String? = null,
         selectionArgs: Array<String>? = null,
-        order: String? = null) : MutableList<String>
+        order: String? = null) : List<SplitRecord>
     {
         val db = this.readableDatabase
         val cursor = db.query(
@@ -225,40 +247,105 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             order
         )
 
-        val result = mutableListOf<String>()
+        val result = mutableListOf<SplitRecord>()
         with(cursor) {
             while (moveToNext()) {
                 if (projection != null) {
+                    val splitRecord = SplitRecord()
                     for (field in projection) {
-                        result.add(
-                            getString(getColumnIndexOrThrow(field))
-                        )
+                        when (field) {
+                            ID_SPLIT -> splitRecord.idSplit = getString(getColumnIndexOrThrow(ID_SPLIT))
+                            ID_USER -> splitRecord.idUser = getString(getColumnIndexOrThrow(ID_USER))
+                            STORE_NAME -> splitRecord.storeName = getString(getColumnIndexOrThrow(STORE_NAME))
+                            TOTAL -> splitRecord.total = getString(getColumnIndexOrThrow(TOTAL))
+                            STATUS -> splitRecord.status = getString(getColumnIndexOrThrow(STATUS))
+                            DATE -> splitRecord.date = getString(getColumnIndexOrThrow(DATE))
+                            else -> println("entered ELSE in FriendRecord when exp")
+                        }
                     }
+                    result.add(splitRecord)
                 }
                 else {
-                    result.add(
-                        getString(getColumnIndexOrThrow(ID_SPLIT))
-                    )
-                    result.add(
-                        getString(getColumnIndexOrThrow(ID_USER))
-                    )
-                    result.add(
-                        getString(getColumnIndexOrThrow(STORE_NAME))
-                    )
-                    result.add(
-                        getString(getColumnIndexOrThrow(TOTAL))
-                    )
-                    result.add(
-                        getString(getColumnIndexOrThrow(STATUS))
-                    )
-                    result.add(
+                    val splitRecord = SplitRecord(
+                        getString(getColumnIndexOrThrow(ID_SPLIT)),
+                        getString(getColumnIndexOrThrow(ID_USER)),
+                        getString(getColumnIndexOrThrow(STORE_NAME)),
+                        getString(getColumnIndexOrThrow(TOTAL)),
+                        getString(getColumnIndexOrThrow(STATUS)),
                         getString(getColumnIndexOrThrow(DATE))
                     )
+                    result.add(splitRecord)
                 }
             }
         }
         cursor.close()
 
         return result
+    }
+
+    /**
+     * custom data class to return obtained records from the query
+     */
+    data class FriendRecord(
+        var idFriend: String? = null,
+        var idUser1: String? = null,
+        var idUser2: String? = null
+    )
+    fun getFriendsFromDB(
+        projection: Array<String>? = null,
+        selection: String? = null,
+        selectionArgs: Array<String>? = null,
+        order: String? = null): List<FriendRecord>
+    {
+        val db = this.readableDatabase
+        val cursor = db.query(
+            "si_friends",
+            projection,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            order
+        )
+
+        val result = mutableListOf<FriendRecord>()
+        with(cursor) {
+            while (moveToNext()) {
+                if (projection != null) {
+                    val friendRecord = FriendRecord()
+                    for (field in projection) {
+                        when (field) {
+                            ID_FRIEND -> friendRecord.idFriend = getString(getColumnIndexOrThrow(ID_FRIEND))
+                            ID_USER1 -> friendRecord.idUser1 = getString(getColumnIndexOrThrow(ID_USER1))
+                            ID_USER2 -> friendRecord.idUser2 = getString(getColumnIndexOrThrow(ID_USER2))
+                            else -> println("entered ELSE in FriendRecord when exp")
+                        }
+                    }
+                    result.add(friendRecord)
+                }
+                else {
+                    val idFriend = getString(getColumnIndexOrThrow(ID_FRIEND))
+                    val idUser1 = getString(getColumnIndexOrThrow(ID_USER1))
+                    val idUser2 = getString(getColumnIndexOrThrow(ID_USER2))
+
+                    val friendRecord = FriendRecord(idFriend, idUser1, idUser2)
+                    result.add(friendRecord)
+                }
+            }
+        }
+        cursor.close()
+
+        return result
+    }
+
+    // INSERT METHODS
+    fun insertIntoFriends(userId1: String, userId2: String) : Long? {
+        val db = this.readableDatabase
+        val values = ContentValues().apply {
+            put(ID_USER1, userId1)
+            put(ID_USER2, userId2)
+        }
+
+        return db?.insert("si_friends", null, values)
     }
 }

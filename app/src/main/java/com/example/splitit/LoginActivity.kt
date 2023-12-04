@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
         this.passwdEdt.text.clear()
     }
 
-    private fun correctLogin(userId : MutableList<String>) {
+    private fun correctLogin(userId : List<Database.UserRecord>) {
         // SUCCESSFUL LOGIN
         loginBtn.isEnabled = false
         loginBtn.isClickable = false
@@ -81,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
             MODE_PRIVATE
         )
         with (sharedPref.edit()) {
-            putInt(Database.ID_USER, userId[0].toInt())
+            userId[0].idUser?.let { putInt(Database.ID_USER, it.toInt()) }
             apply()
         }
 

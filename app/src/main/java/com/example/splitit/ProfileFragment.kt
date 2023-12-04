@@ -6,14 +6,18 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 
 class ProfileFragment : Fragment() {
     private lateinit var sharedPref : SharedPreferences
@@ -61,9 +65,56 @@ class ProfileFragment : Fragment() {
             ).show()
         }
 
+        // ADD FRIEND BUTTON
         val profileBtn2 = view.findViewById<Button>(R.id.profile_btn2)
         profileBtn2.setOnClickListener {
+            // Create an AlertDialog Builder
+            val builder = AlertDialog.Builder(requireContext())
 
+            // Set the dialog title and message
+            builder.setTitle(R.string.profile_btn2_alert_title)
+            builder.setMessage(R.string.profile_btn2_alert_msg)
+
+            // Create an EditText to input the friend's ID
+            val input = EditText(requireContext())
+            input.inputType = InputType.TYPE_CLASS_NUMBER // Set the input type to numbers
+
+            // Set the EditText as the dialog view
+            builder.setView(input)
+
+            // Set up the buttons for the dialog
+            builder.setPositiveButton(R.string.profile_btn2_alert_btn_pos) { _, _ ->
+                val friendId = input.text.toString()
+                val dbHelper = Database(requireContext())
+                val insertResult = dbHelper.insertIntoFriends(
+                    loggedUser.getUserData()[2],
+                    friendId
+                )
+                println("insert result: $insertResult")
+                val existingFriends = dbHelper.getFriendsFromDB()
+                println("existing friends: $existingFriends")
+
+                // Validate insertResult and show Snackbar accordingly
+                val insertResultMsg = if (insertResult != -1L) {
+                    // Insertion successful
+                    getString(R.string.profile_add_success)
+                } else {
+                    // Insertion failed or friend already added
+                    getString(R.string.profile_add_failure)
+                }
+                Snackbar.make(
+                    requireView(),
+                    insertResultMsg,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+            builder.setNegativeButton(R.string.profile_btn2_alert_btn_neg) { dialog, _ ->
+                dialog.cancel() // Dismiss the dialog when "Cancel" is clicked
+            }
+
+            // Create and show the AlertDialog
+            val dialog = builder.create()
+            dialog.show()
         }
 
         // SIGN OUT BUTTON

@@ -22,8 +22,8 @@ class User(context: Context, id: Int) {
         val userData = this.getUserDataFromDB(context)
         println("Found user data in User init: $userData")
 
-        this.name = userData[0]
-        this.email = userData[1]
+        this.name = userData[0].name.toString()
+        this.email = userData[0].email.toString()
     }
 
     /**
@@ -32,7 +32,7 @@ class User(context: Context, id: Int) {
      * @param context
      * @return List of strings containing the query result
      */
-    private fun getUserDataFromDB(context: Context): MutableList<String> {
+    private fun getUserDataFromDB(context: Context): List<Database.UserRecord> {
         val dbHelper = Database(context)
         val selection = "${Database.ID_USER} = ?"
 

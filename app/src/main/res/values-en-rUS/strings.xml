@@ -21,4 +21,10 @@
     <string name="new_split_edt2">Add friends</string>
     <string name="profile_btn1">Copy my user id</string>
     <string name="profile_btn1_toast">User id copied to clipboard!</string>
+    <string name="profile_btn2_alert_title">Add friend</string>
+    <string name="profile_btn2_alert_msg">Enter your friend\'s user ID:</string>
+    <string name="profile_btn2_alert_btn_pos">Add</string>
+    <string name="profile_btn2_alert_btn_neg">Cancel</string>
+    <string name="profile_add_success">Friend added!</string>
+    <string name="profile_add_failure">Friend already added or error xd!</string>
 </resources>
