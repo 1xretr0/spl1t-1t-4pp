@@ -74,6 +74,7 @@
                         android:hint="@string/dummy_text"
                         android:inputType="numberDecimal"
                         android:textAlignment="center"
+                        android:textColor="@color/complementary"
                         android:textSize="30sp"
                         android:textStyle="normal" />
 
@@ -118,6 +119,8 @@
                         android:fontFamily="@font/raleway"
                         android:hint="@string/new_split_edt2"
                         android:inputType="text"
+                        android:textColor="@color/complementary"
+                        android:textColorHint="@color/complementary"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/add_friends_btn"
                         app:layout_constraintStart_toStartOf="parent"
@@ -198,6 +201,7 @@
 
                     <SeekBar
                         android:id="@+id/seekBar"
+                        style="@android:style/Widget.Material.SeekBar.Discrete"
                         android:layout_width="340dp"
                         android:layout_height="30dp"
                         android:backgroundTint="@color/main_blue"
