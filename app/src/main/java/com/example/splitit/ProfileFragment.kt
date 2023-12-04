@@ -45,8 +45,8 @@ class ProfileFragment : Fragment() {
         val usernameTxt = view.findViewById<TextView>(R.id.profile_txt2)
         val userEmailTxt = view.findViewById<TextView>(R.id.profile_txt3)
 
-        usernameTxt.text = loggedUser.getUserData()[0]
-        userEmailTxt.text = loggedUser.getUserData()[1]
+        usernameTxt.text = loggedUser.getUserName()
+        userEmailTxt.text = loggedUser.getUserEmail()
 
         // BUTTON TO COPY TEXT TO CLIPBOARD
         val profileBtn1 = view.findViewById<Button>(R.id.profile_btn_1)

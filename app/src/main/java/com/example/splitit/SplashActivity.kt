@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
 
         val myPreferences = getSharedPreferences(R.string.preference_file_key.toString(), MODE_PRIVATE)
         val savedUserId = myPreferences.getInt(Database.ID_USER, 0)
-        println("saved user id: $savedUserId")
+        println("saved user id at splash: $savedUserId")
 
         val timer = Thread {
             try {

@@ -49,15 +49,17 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db?.insert("si_friends", ID_USER1, friendsCV) */
         
         //CREATE SPLITS TABLE
-        db.execSQL("CREATE TABLE si_splits(id_split integer primary key autoincrement, id_user int, store_name varchar, total decimal, status varchar, date date, FOREIGN KEY (id_user) REFERENCES si_users(id))")
+        db.execSQL("CREATE TABLE si_splits(id_split integer primary key autoincrement, id_user int, store_name varchar, total decimal, status int, date date, FOREIGN KEY (id_user) REFERENCES si_users(id))")
         
-        /*val splitsCV = ContentValues() //INSERT VALUES INTO PAYMENTS TABLE
+        val splitsCV = ContentValues() //INSERT VALUES INTO PAYMENTS TABLE
         splitsCV.put(ID_USER, 1)
+        splitsCV.put(STORE_NAME, "Perro Cafe")
         splitsCV.put(TOTAL, 102.00)
+        splitsCV.put(STATUS, 1)
         splitsCV.put(DATE, "2023-11-16")
-        db?.insert("si_splits", ID_USER, splitsCV)
+        db.insert("si_splits", ID_USER, splitsCV)
 
-        splitsCV.put(ID_USER, 2)
+        /*splitsCV.put(ID_USER, 2)
         splitsCV.put(TOTAL, 500.00)
         splitsCV.put(DATE, "2023-11-17")
         db?.insert("si_splits", ID_USER, splitsCV)

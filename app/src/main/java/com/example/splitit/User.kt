@@ -55,6 +55,18 @@ class User(context: Context, id: Int) {
         )
     }
 
+    fun getUserId() : String {
+        return this.id.toString()
+    }
+
+    fun getUserName(): String {
+        return this.name
+    }
+
+    fun getUserEmail(): String {
+        return this.email
+    }
+
     /**
      * deletes logged user id from shared prefs
      * @return true on success
