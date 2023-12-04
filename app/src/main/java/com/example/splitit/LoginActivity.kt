@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
         this.passwdEdt.text.clear()
     }
 
-    private fun correctLogin(userId : MutableList<Long>) {
+    private fun correctLogin(userId : MutableList<String>) {
         // SUCCESSFUL LOGIN
         loginBtn.isEnabled = false
         loginBtn.isClickable = false

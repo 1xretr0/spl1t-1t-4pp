@@ -24,4 +24,5 @@
     <string name="add_aplit_paybtn">Pagar</string>
     <string name="new_split_edt2">Añadir amigos</string>
     <string name="profile_btn1">Copiar mi id de usuario</string>
+    <string name="profile_btn1_toast">Id de usuario copiado!</string>
 </resources>

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 class User(context: Context, id: Int) {
     private var name : String
     private var email : String
-    private var id : Int = 0
+    private var id : Int
 
     private var sharedPref : SharedPreferences
 
@@ -18,21 +18,47 @@ class User(context: Context, id: Int) {
                 AppCompatActivity.MODE_PRIVATE
             )
         this.id = id
-        this.name = "sobas"
-        this.email = "sobasemail"
+
+        val userData = this.getUserDataFromDB(context)
+        println("Found user data in User init: $userData")
+
+        this.name = userData[0]
+        this.email = userData[1]
+    }
+
+    /**
+     * gets the user name and email from db by given id
+     * in constructor
+     * @param context
+     * @return List of strings containing the query result
+     */
+    private fun getUserDataFromDB(context: Context): MutableList<String> {
+        val dbHelper = Database(context)
+        val selection = "${Database.ID_USER} = ?"
+
+        return dbHelper.getUserFromDB(
+            arrayOf(Database.NAME, Database.EMAIL),
+            selection,
+            arrayOf(this.id.toString())
+        )
     }
 
     /**
      * getter method for user data
      * @return List containing user name and email
      */
-    fun getUserData() : List<String> {
+    fun getUserData(): List<String> {
         return listOf(
             this.name,
-            this.email
+            this.email,
+            this.id.toString()
         )
     }
 
+    /**
+     * deletes logged user id from shared prefs
+     * @return true on success
+     */
     fun signOutUser(): Boolean {
         with (sharedPref.edit()) {
             remove(Database.ID_USER)

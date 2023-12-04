@@ -30,7 +30,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.insert("si_users", NAME, usersCV)
 
         // CREATE FRIENDS TABLE
-        db.execSQL("CREATE TABLE si_friends(id_friend integer primary key autoincrement, id_user1 int, id_user2 int, status varchar, FOREIGN KEY (id_user1) REFERENCES si_users(id), FOREIGN KEY (id_user2) REFERENCES si_users(id))")
+        db.execSQL("CREATE TABLE si_friends(id_friend integer primary key autoincrement, id_user1 int, id_user2 int, FOREIGN KEY (id_user1) REFERENCES si_users(id), FOREIGN KEY (id_user2) REFERENCES si_users(id))")
 
         /* val friendsCV = ContentValues() // INSERT INTO FRIENDS TABLE
         friendsCV.put(ID_USER1, 1)
@@ -49,7 +49,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db?.insert("si_friends", ID_USER1, friendsCV) */
         
         //CREATE SPLITS TABLE
-        db.execSQL("CREATE TABLE si_splits(id_split integer primary key autoincrement, id_user int, store_name varchar, total decimal, date date, FOREIGN KEY (id_user) REFERENCES si_users(id))")
+        db.execSQL("CREATE TABLE si_splits(id_split integer primary key autoincrement, id_user int, store_name varchar, total decimal, status varchar, date date, FOREIGN KEY (id_user) REFERENCES si_users(id))")
         
         /*val splitsCV = ContentValues() //INSERT VALUES INTO PAYMENTS TABLE
         splitsCV.put(ID_USER, 1)
@@ -142,14 +142,14 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val ID_FRIEND ="id_friend"  //PK
         const val ID_USER1 ="id_user1" //FK from users
         const val ID_USER2 ="id_user2" //FK from users
-        const val STATUS ="status"
 
         // Splits TABLE
-        const val ID_SPLIT ="id_split" //PK
-        const val ID_USER ="id_user" //FK from users
+        const val ID_SPLIT = "id_split" //PK
+        const val ID_USER = "id_user" //FK from users
         const val STORE_NAME = "store_name"
-        const val TOTAL ="total" // Total Amount
-        const val DATE ="date"
+        const val TOTAL = "total" // Total Amount
+        const val STATUS = "status" // Split status
+        const val DATE = "date"
 
         // Split details TABLE
         const val ID_DETAIL ="id_detail" //PK
@@ -161,7 +161,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         projection: Array<String>? = null,
         selection: String? = null,
         selectionArgs: Array<String>? = null,
-        order: String? = null): MutableList<Long>
+        order: String? = null): MutableList<String>
     {
         val db = this.readableDatabase
         val cursor = db.query(
@@ -174,12 +174,33 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             order
         )
 
-        val result = mutableListOf<Long>()
+        val result = mutableListOf<String>()
         with(cursor) {
             while (moveToNext()) {
-                result.add(
-                    getLong(getColumnIndexOrThrow(ID_USER))
-                )
+                if (projection != null) {
+                    for (field in projection) {
+                        result.add(
+                            getString(getColumnIndexOrThrow(field))
+                        )
+                    }
+                }
+                else {
+                    result.add(
+                        getString(getColumnIndexOrThrow(ID_USER))
+                    )
+                    result.add(
+                        getString(getColumnIndexOrThrow(NAME))
+                    )
+                    result.add(
+                        getString(getColumnIndexOrThrow(LASTNAME))
+                    )
+                    result.add(
+                        getString(getColumnIndexOrThrow(EMAIL))
+                    )
+                    result.add(
+                        getString(getColumnIndexOrThrow(PASSWORD))
+                    )
+                }
             }
         }
         cursor.close()
@@ -191,7 +212,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         projection: Array<String>? = null,
         selection: String? = null,
         selectionArgs: Array<String>? = null,
-        order: String? = null) : MutableList<Long>
+        order: String? = null) : MutableList<String>
     {
         val db = this.readableDatabase
         val cursor = db.query(
@@ -204,12 +225,36 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             order
         )
 
-        val result = mutableListOf<Long>()
+        val result = mutableListOf<String>()
         with(cursor) {
             while (moveToNext()) {
-                result.add(
-                    getLong(getColumnIndexOrThrow(ID_SPLIT))
-                )
+                if (projection != null) {
+                    for (field in projection) {
+                        result.add(
+                            getString(getColumnIndexOrThrow(field))
+                        )
+                    }
+                }
+                else {
+                    result.add(
+                        getString(getColumnIndexOrThrow(ID_SPLIT))
+                    )
+                    result.add(
+                        getString(getColumnIndexOrThrow(ID_USER))
+                    )
+                    result.add(
+                        getString(getColumnIndexOrThrow(STORE_NAME))
+                    )
+                    result.add(
+                        getString(getColumnIndexOrThrow(TOTAL))
+                    )
+                    result.add(
+                        getString(getColumnIndexOrThrow(STATUS))
+                    )
+                    result.add(
+                        getString(getColumnIndexOrThrow(DATE))
+                    )
+                }
             }
         }
         cursor.close()

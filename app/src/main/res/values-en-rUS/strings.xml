@@ -20,4 +20,5 @@
     <string name="add_aplit_paybtn">Split and pay</string>
     <string name="new_split_edt2">Add friends</string>
     <string name="profile_btn1">Copy my user id</string>
+    <string name="profile_btn1_toast">User id copied to clipboard!</string>
 </resources>
