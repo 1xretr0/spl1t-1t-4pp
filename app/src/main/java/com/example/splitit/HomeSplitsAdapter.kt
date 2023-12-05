@@ -12,20 +12,23 @@ class HomeSplitsAdapter: RecyclerView.Adapter<HomeSplitsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): HomeSplitsAdapter.ViewHolder {
+    ): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.home_split_template, parent, false
+            R.layout.item_split, parent, false
         )
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var s = dataset[position]
-        holder.nombreTextView.text = s.storeName
+        val s = dataset[position]
+
+        holder.storeName.text = s.storeName
+        holder.total.text = s.total
+        holder.status.text = if (s.status == "1") "Pagado" else "Pendiente"
     }
 
     override fun getItemCount(): Int {
-        return 0
+        return dataset.size
     }
 
     fun addSplitsData(splitRecords: List<Database.SplitRecord>) {
@@ -34,9 +37,14 @@ class HomeSplitsAdapter: RecyclerView.Adapter<HomeSplitsAdapter.ViewHolder>() {
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nombreTextView: TextView
+        val storeName: TextView
+        val total: TextView
+        val status: TextView
         init {
-            nombreTextView = itemView.findViewById(R.id.home_split_txt2)
+            super.itemView
+            storeName = itemView.findViewById(R.id.home_split_txt2)
+            total = itemView.findViewById(R.id.home_split_txt4)
+            status = itemView.findViewById(R.id.home_split_txt3)
         }
     }
 }

@@ -15,7 +15,7 @@
     <string name="profile_menu_itm">Perfil</string>
     <string name="home_fragment_txt1">Splits Recientes</string>
     <string name="profile_btn2">Agregar amigo</string>
-    <string name="home_split_txt1">Monto:</string>
+    <string name="home_split_txt1" translatable="false">$</string>
     <string name="main_snackbar_shake">¡Crear nuevo split!</string>
     <string name="new_split_txt1">Crear split</string>
     <string name="new_split_txt2">Total</string>
@@ -31,4 +31,6 @@
     <string name="profile_btn2_alert_btn_neg">Cancelar</string>
     <string name="profile_add_success">Amigo agregado!</string>
     <string name="profile_add_failure">Amigo ya agregado o error xd!</string>
+    <string name="split_status_1">Pagado</string>
+    <string name="split_status_0">Pendiente</string>
 </resources>
