@@ -157,11 +157,11 @@
 
         <Button
             android:id="@+id/button_pay"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
+            android:layout_width="353dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="121dp"
+            android:layout_marginEnd="30dp"
             android:backgroundTint="@color/secondary_blue"
             android:fontFamily="@font/righteous"
             android:paddingTop="12dp"
