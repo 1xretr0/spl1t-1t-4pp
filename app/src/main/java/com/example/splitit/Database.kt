@@ -291,7 +291,8 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     data class FriendRecord(
         var idFriend: String? = null,
         var idUser1: String? = null,
-        var idUser2: String? = null
+        var idUser2: String? = null,
+        var name: String? = null
     )
     fun getFriendsFromDB(
         projection: Array<String>? = null,
@@ -320,6 +321,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                             ID_FRIEND -> friendRecord.idFriend = getString(getColumnIndexOrThrow(ID_FRIEND))
                             ID_USER1 -> friendRecord.idUser1 = getString(getColumnIndexOrThrow(ID_USER1))
                             ID_USER2 -> friendRecord.idUser2 = getString(getColumnIndexOrThrow(ID_USER2))
+                            NAME -> friendRecord.name = getString(getColumnIndexOrThrow(NAME))
                             else -> println("entered ELSE in FriendRecord when exp")
                         }
                     }

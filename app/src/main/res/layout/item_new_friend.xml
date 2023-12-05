@@ -32,36 +32,32 @@
 
         <TextView
             android:id="@+id/new_split_friendname_txt"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="12dp"
             android:fontFamily="@font/righteous"
-            android:text="TextView"
+            android:text="@string/dummy_text"
             android:textColor="@color/complementary"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.182"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.148" />
+            app:layout_constraintEnd_toStartOf="@+id/new_split_friendamount_txt"
+            app:layout_constraintStart_toEndOf="@+id/usericon_img"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/new_split_friendamount_txt"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="5dp"
             android:fontFamily="@font/raleway"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:text="TextView"
             android:textColor="@color/complementary"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.928"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.171" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <SeekBar
             android:id="@+id/new_split_amount_skb"

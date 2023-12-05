@@ -143,26 +143,25 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="220dp"
+            android:id="@+id/recycler_view_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="29dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/rounded_layout_bg"
+            android:foregroundGravity="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="0dp"
+            android:id="@+id/button_pay"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="157dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="121dp"
             android:backgroundTint="@color/secondary_blue"
             android:fontFamily="@font/righteous"
             android:paddingTop="12dp"
@@ -171,10 +170,9 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:cornerRadius="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view_2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
