@@ -7,11 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class HomeFragment : Fragment() {
     private lateinit var sharedPref : SharedPreferences
     private lateinit var loggedUser : User
     private lateinit var dbHelper : Database
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var homeSplitsAdapter: HomeSplitsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,17 +48,17 @@ class HomeFragment : Fragment() {
         )
         println("found splits: $splitsFromLoggedUser")
 
-//        splitsFromLoggedUser.forEach { splitRecord ->
-//            val inflatedLayout = inflater.inflate(R.id.splits_linear_lyt1, null)
-//
-//            // Populate the inflated layout with data from the SplitRecord
-//            inflatedLayout.findViewById<TextView>(R.id.home_split_txt2).text = splitRecord.storeName
-//            inflatedLayout.findViewById<TextView>(R.id.home_split_txt3).text = splitRecord.status
-//            inflatedLayout.findViewById<TextView>(R.id.home_split_txt4).text = splitRecord.total.toString()
-//
-//            // Add the inflated layout to the LinearLayout
-//            splitsLinearLayout.addView(inflatedLayout)
-//        }
+        // CREATE VIEW OF OBTAINED SPLITS
+        recyclerView = view.findViewById(R.id.recycler_view)
+        homeSplitsAdapter = HomeSplitsAdapter()
+        recyclerView.adapter = homeSplitsAdapter
+        recyclerView.setHasFixedSize(true)
+
+        val layoutManager = GridLayoutManager(requireContext(), 1)
+        recyclerView.layoutManager = layoutManager
+
+        // PASS OBTAINED SPLITS TO ADAPTER
+        homeSplitsAdapter.addSplitsData(splitsFromLoggedUser)
 
         return view
     }
