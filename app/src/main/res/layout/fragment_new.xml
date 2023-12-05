@@ -75,9 +75,10 @@
                         android:fontFamily="@font/righteous"
                         android:hint="@string/dummy_text"
                         android:inputType="numberDecimal"
+                        android:shadowColor="@color/complementary"
                         android:textAlignment="center"
                         android:textColor="@color/complementary"
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="normal" />
 
                 </LinearLayout>
