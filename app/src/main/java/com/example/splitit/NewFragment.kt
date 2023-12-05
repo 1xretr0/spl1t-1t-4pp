@@ -40,32 +40,38 @@ class NewFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_new, container, false)
 
+        val addedFriendsList = ArrayList<Database.FriendRecord>()
+
         // ADD FRIEND BUTTON LISTENER
         val addFriendBtn = view.findViewById<Button>(R.id.add_friends_btn)
+
+        // GET FRIEND'S NAME TO ADD AND CLEAR
         addFriendBtn.setOnClickListener {
-            // GET FRIEND'S NAME TO ADD AND CLEAR
             val addFriendTxt = view.findViewById<EditText>(R.id.new_split_edt2)
             val newFriendName = addFriendTxt.text.toString()
-            addFriendTxt.text.clear()
+            if (newFriendName.isNotBlank() && newFriendName.isNotEmpty()) {
+                addFriendTxt.text.clear()
 
-            // CREATE VIEW OF ADDED FRIEND
-            recyclerView = view.findViewById(R.id.recycler_view_2)
-            newFriendAdapter = NewFriendAdapter()
-            recyclerView.adapter = newFriendAdapter
-            recyclerView.setHasFixedSize(true)
+                // CREATE VIEW OF ADDED FRIEND
+                recyclerView = view.findViewById(R.id.recycler_view_2)
+                newFriendAdapter = NewFriendAdapter()
+                recyclerView.adapter = newFriendAdapter
+                recyclerView.setHasFixedSize(true)
 
-            val layouManager = GridLayoutManager(requireContext(), 1)
-            recyclerView.layoutManager = layouManager
+                val layoutManager = GridLayoutManager(requireContext(), 1)
+                recyclerView.layoutManager = layoutManager
 
-            // PASS NEW FRIEND DATA TO ADAPTER
-            newFriendAdapter.addFriendData(
-                listOf(Database.FriendRecord(
+                // PASS NEW FRIEND DATA TO ADAPTER
+                addedFriendsList.add(Database.FriendRecord(
                     null,
                     null,
                     null,
                     newFriendName
                 ))
-            )
+                newFriendAdapter.addFriendData(
+                    addedFriendsList
+                )
+            }
         }
 
         return view

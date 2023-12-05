@@ -28,4 +28,5 @@
     <string name="profile_add_failure">Friend already added or error xd!</string>
     <string name="split_status_1">Paid</string>
     <string name="split_status_0">Pending</string>
+    <string name="new_friend_sb_empty">Empty friend name</string>
 </resources>

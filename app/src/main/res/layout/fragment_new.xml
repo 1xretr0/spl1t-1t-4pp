@@ -13,6 +13,26 @@
         android:layout_gravity="center"
         android:foregroundGravity="center">
 
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"
+            android:maxHeight="300dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/rounded_layout_bg"
+                android:foregroundGravity="center" />
+        </ScrollView>
+
         <TextView
             android:id="@+id/new_split_txt1"
             android:layout_width="wrap_content"
@@ -32,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="30dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,17 +62,17 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_layout_bg"
                 android:backgroundTint="@color/white"
                 tools:ignore="TextSizeCheck">
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="135dp"
+                    android:layout_height="120dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:paddingBottom="25dp"
+                    android:paddingBottom="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +92,6 @@
                         android:id="@+id/new_split_edt1"
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:autofillHints="false"
                         android:fontFamily="@font/righteous"
                         android:hint="@string/dummy_text2"
@@ -94,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/righteous"
                 android:text="@string/add_split_txt3"
                 android:textColor="@color/complementary"
@@ -147,25 +166,12 @@
 
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/rounded_layout_bg"
-            android:foregroundGravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
         <Button
             android:id="@+id/button_pay"
             android:layout_width="353dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="310dp"
             android:layout_marginEnd="30dp"
             android:backgroundTint="@color/secondary_blue"
             android:fontFamily="@font/righteous"
@@ -177,7 +183,7 @@
             app:cornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view_2" />
+            app:layout_constraintTop_toTopOf="@+id/scrollView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

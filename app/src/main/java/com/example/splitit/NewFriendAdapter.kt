@@ -30,7 +30,7 @@ class NewFriendAdapter: RecyclerView.Adapter<NewFriendAdapter.ViewHolder>() {
         return dataset.size
     }
 
-    fun addFriendData(friendRecords: List<Database.FriendRecord>) {
+    fun addFriendData(friendRecords: ArrayList<Database.FriendRecord>) {
         dataset.addAll(friendRecords)
         notifyDataSetChanged()
     }
