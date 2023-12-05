@@ -40,7 +40,7 @@
             app:layout_constraintTop_toBottomOf="@+id/new_split_txt1">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="345dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_layout_bg"
@@ -48,7 +48,7 @@
                 tools:ignore="TextSizeCheck">
 
                 <LinearLayout
-                    android:layout_width="349dp"
+                    android:layout_width="0dp"
                     android:layout_height="135dp"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -88,86 +88,93 @@
                 android:id="@+id/new_split_txt3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="20dp"
                 android:fontFamily="@font/righteous"
                 android:text="@string/add_split_txt3"
                 android:textColor="@color/complementary"
                 android:textSize="20sp" />
 
-            <LinearLayout
-                android:id="@+id/new_splits_lyt"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LinnearLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:background="@drawable/rounded_layout_bg"
+                android:gravity="center">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/LinnearLayout2"
-                    android:layout_width="350dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/rounded_layout_bg"
-                    android:gravity="center">
-
-                    <EditText
-                        android:id="@+id/new_split_edt2"
-                        android:layout_width="195dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="36dp"
-                        android:layout_marginBottom="9dp"
-                        android:autofillHints="true"
-                        android:fontFamily="@font/raleway"
-                        android:hint="@string/new_split_edt2"
-                        android:inputType="text"
-                        android:textColor="@color/complementary"
-                        android:textColorHint="@color/complementary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/add_friends_btn"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                        android:id="@+id/add_friends_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/raleway_bold"
-                        android:labelFor="@id/add_friends_btn"
-                        android:text="@string/add_split_btn2"
-                        android:textAlignment="center"
-                        android:textSize="35sp"
-                        app:cornerRadius="50dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <LinearLayout
-                    android:layout_width="350dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/rounded_layout_bg"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:paddingBottom="10dp"/>
+                <EditText
+                    android:id="@+id/new_split_edt2"
+                    android:layout_width="195dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="36dp"
+                    android:layout_marginBottom="9dp"
+                    android:autofillHints="true"
+                    android:fontFamily="@font/raleway"
+                    android:hint="@string/new_split_edt2"
+                    android:inputType="text"
+                    android:textColor="@color/complementary"
+                    android:textColorHint="@color/complementary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/add_friends_btn"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/button3"
-                    android:layout_width="match_parent"
+                    android:id="@+id/add_friends_btn"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:fontFamily="@font/righteous"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/add_aplit_paybtn"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:cornerRadius="15dp" />
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:labelFor="@id/add_friends_btn"
+                    android:text="@string/add_split_btn2"
+                    android:textAlignment="center"
+                    android:textSize="35sp"
+                    app:cornerRadius="50dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="29dp"
+            android:background="@drawable/rounded_layout_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="157dp"
+            android:backgroundTint="@color/secondary_blue"
+            android:fontFamily="@font/righteous"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="@string/add_aplit_paybtn"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:cornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

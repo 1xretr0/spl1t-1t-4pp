@@ -17,16 +17,19 @@
         tools:ignore="TextSizeCheck">
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="178dp"
             android:layout_marginTop="85dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/raleway"
+            android:layout_marginBottom="25dp"
+            android:fontFamily="@font/righteous"
             android:text="@string/home_split_txt1"
-            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/home_split_txt4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,8 +37,8 @@
             android:id="@+id/home_split_txt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/righteous"
             android:text="@string/dummy_text"
             android:textColor="@color/white"
@@ -65,7 +68,7 @@
             android:id="@+id/home_split_txt4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
+            android:layout_marginStart="220dp"
             android:fontFamily="@font/righteous"
             android:text="@string/dummy_text"
             android:textAlignment="center"
@@ -75,6 +78,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.826" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="84dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/new_split_txt2"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
