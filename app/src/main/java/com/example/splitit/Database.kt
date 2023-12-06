@@ -292,7 +292,9 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         var idFriend: String? = null,
         var idUser1: String? = null,
         var idUser2: String? = null,
-        var name: String? = null
+        var name: String? = null,
+        var splitAmount: Float? = null,
+        var total: Float? = null
     )
     fun getFriendsFromDB(
         projection: Array<String>? = null,

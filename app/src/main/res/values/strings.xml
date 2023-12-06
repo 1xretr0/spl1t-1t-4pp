@@ -34,6 +34,6 @@
     <string name="profile_add_failure">Amigo ya agregado o error xd!</string>
     <string name="split_status_1">Pagado</string>
     <string name="split_status_0">Pendiente</string>
-    <string name="new_friend_sb_empty">Nombre de amigo vacío</string>
+    <string name="new_friend_sb_empty">Monto total vacío!</string>
     <string name="new_split_txt4">AGITA PARA CREAR NUEVO SPLIT</string>
 </resources>

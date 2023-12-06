@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
 
 class NewFragment : Fragment() {
     private lateinit var sharedPref : SharedPreferences
@@ -41,16 +43,54 @@ class NewFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_new, container, false)
 
         val addedFriendsList = ArrayList<Database.FriendRecord>()
+        val addFriendTxt = view.findViewById<EditText>(R.id.new_split_edt2)
+        val totalEdt = view.findViewById<EditText>(R.id.new_split_edt1)
 
         // ADD FRIEND BUTTON LISTENER
         val addFriendBtn = view.findViewById<Button>(R.id.add_friends_btn)
-
-        // GET FRIEND'S NAME TO ADD AND CLEAR
         addFriendBtn.setOnClickListener {
-            val addFriendTxt = view.findViewById<EditText>(R.id.new_split_edt2)
             val newFriendName = addFriendTxt.text.toString()
-            if (newFriendName.isNotBlank() && newFriendName.isNotEmpty()) {
+            // GET TOTAL AMOUNT AT THE MOMENT
+            var totalAmount = totalEdt.text.toString()
+
+            if (totalAmount.isBlank() || totalAmount.isEmpty()) {
+                // Create an AlertDialog Builder
+                val builder = AlertDialog.Builder(requireContext())
+
+                // Set the dialog title and message
+                builder.setTitle(R.string.new_menu_itm)
+                builder.setMessage(R.string.new_friend_sb_empty)
+
+                builder.setNegativeButton(android.R.string.ok) { dialog, _ ->
+                    dialog.cancel() // Dismiss the dialog when "Cancel" is clicked
+                    totalEdt.requestFocus()
+                }
+
+                // Create and show the AlertDialog
+                val dialog = builder.create()
+                dialog.show()
+            }
+            else if (newFriendName.isNotBlank() && newFriendName.isNotEmpty()) {
                 addFriendTxt.text.clear()
+                // ADD NEW FRIEND INTO FRIENDS ADDED LIST
+                addedFriendsList.add(Database.FriendRecord(
+                    null,
+                    null,
+                    null,
+                    newFriendName
+                ))
+
+                if (totalAmount.isEmpty() || totalAmount.isBlank())
+                    totalAmount = "0"
+
+                val numberOfFriends = addedFriendsList.size
+                val splitAmount = totalAmount.toFloat() / numberOfFriends
+
+                // SPLIT AMOUNT BETWEEN THE ADDED FRIENDS
+                for (friend in addedFriendsList) {
+                    friend.splitAmount = splitAmount
+                    friend.total = totalAmount.toFloat()
+                }
 
                 // CREATE VIEW OF ADDED FRIEND
                 recyclerView = view.findViewById(R.id.recycler_view_2)
@@ -61,17 +101,15 @@ class NewFragment : Fragment() {
                 val layoutManager = GridLayoutManager(requireContext(), 1)
                 recyclerView.layoutManager = layoutManager
 
-                // PASS NEW FRIEND DATA TO ADAPTER
-                addedFriendsList.add(Database.FriendRecord(
-                    null,
-                    null,
-                    null,
-                    newFriendName
-                ))
                 newFriendAdapter.addFriendData(
                     addedFriendsList
                 )
             }
+        }
+
+        // PAY BUTTON LISTENER
+        view.findViewById<Button>(R.id.button_pay).setOnClickListener {
+            // TODO(save new split and show payed alertDialog)
         }
 
         return view
