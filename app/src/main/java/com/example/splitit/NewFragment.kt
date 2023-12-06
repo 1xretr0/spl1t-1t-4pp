@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import java.time.LocalDate
 
 
 class NewFragment : Fragment() {
@@ -49,6 +51,8 @@ class NewFragment : Fragment() {
         // ADD FRIEND BUTTON LISTENER
         val addFriendBtn = view.findViewById<Button>(R.id.add_friends_btn)
         addFriendBtn.setOnClickListener {
+            println("adapter item count ${newFriendAdapter.itemCount}")
+
             val newFriendName = addFriendTxt.text.toString()
             // GET TOTAL AMOUNT AT THE MOMENT
             var totalAmount = totalEdt.text.toString()
@@ -109,9 +113,47 @@ class NewFragment : Fragment() {
 
         // PAY BUTTON LISTENER
         view.findViewById<Button>(R.id.button_pay).setOnClickListener {
-            // TODO(save new split and show payed alertDialog)
+            if (newFriendAdapter.itemCount < 1) {
+                Snackbar.make(
+                    view.findViewById(android.R.id.content),
+                    R.string.new_split_pay_sb,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+            else {
+                // TODO (call create split fun)
+            }
         }
 
         return view
+    }
+
+    private fun createNewSplit(userId: String, storeName: String, total: Float, addedFriends: ArrayList<Database.FriendRecord>): Boolean {
+        // INSERT NEW SPLIT INTO SPLITS TABLE
+        val splitInsertResult = dbHelper.insertIntoSplits(
+            userId,
+            storeName,
+            total.toString(),
+            "1",
+            LocalDate.now().toString()
+        )
+        // VALIDATE RESULT TO CONTINUE
+        if (splitInsertResult == -1L) {
+            Snackbar.make(
+                requireView(),
+                getString(R.string.new_split_pay_db_error),
+                Snackbar.LENGTH_SHORT
+            ).show()
+            return false
+        }
+        return true
+
+        // INSERT EACH SPLIT DETAIL INTO SPLIT DETAILS TABLE
+//        for (record in addedFriends) {
+//            val splitDetailInsertResult = dbHelper.insertIntoSplitDetails(
+//                splitInsertResult,
+//
+//            )
+//        }
     }
 }

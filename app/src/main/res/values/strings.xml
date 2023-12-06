@@ -35,6 +35,8 @@
     <string name="split_status_1">Pagado</string>
     <string name="split_status_0">Pendiente</string>
     <string name="new_friend_sb_empty">Monto total vacío!</string>
-    <string name="new_split_txt4">AGITA PARA CREAR NUEVO SPLIT</string>
+    <string name="new_split_txt4">Agita para crear nuevo split</string>
+    <string name="new_split_pay_sb">Primero divide entre tus amigos</string>
+    <string name="new_split_pay_db_error">Error al crear nuevo split</string>
     <string name="new_split_txtNombre">Tienda</string>
 </resources>

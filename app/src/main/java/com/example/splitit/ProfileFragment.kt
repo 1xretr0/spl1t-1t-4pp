@@ -87,7 +87,7 @@ class ProfileFragment : Fragment() {
                 val friendId = input.text.toString()
                 val dbHelper = Database(requireContext())
                 val insertResult = dbHelper.insertIntoFriends(
-                    loggedUser.getUserData()[2],
+                    loggedUser.getUserId(),
                     friendId
                 )
                 println("insert result: $insertResult")

@@ -354,4 +354,28 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
 
         return db?.insert("si_friends", null, values)
     }
+
+    fun insertIntoSplits(userId: String, storeName: String, total: String, status: String, date: String): Long? {
+        val db = this.readableDatabase
+        val values = ContentValues().apply {
+            put(ID_USER, userId)
+            put(STORE_NAME, storeName)
+            put(TOTAL, total)
+            put(STATUS, status)
+            put(DATE, date)
+        }
+
+        return db?.insert("si_splits", null, values)
+    }
+
+    fun insertIntoSplitDetails(splitId: String, userId: String, indAmount: String): Long? {
+        val db = this.readableDatabase
+        val values = ContentValues().apply {
+            put(ID_SPLIT, splitId)
+            put(ID_USER, userId)
+            put(INDIVIDUAL_AMOUNT, indAmount)
+        }
+
+        return db?.insert("si_split_details", null, values)
+    }
 }
