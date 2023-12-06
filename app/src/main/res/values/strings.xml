@@ -36,4 +36,5 @@
     <string name="split_status_0">Pendiente</string>
     <string name="new_friend_sb_empty">Monto total vacío!</string>
     <string name="new_split_txt4">AGITA PARA CREAR NUEVO SPLIT</string>
+    <string name="new_split_txtNombre">Tienda</string>
 </resources>

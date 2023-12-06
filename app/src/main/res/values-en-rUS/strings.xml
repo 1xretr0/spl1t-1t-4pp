@@ -30,4 +30,5 @@
     <string name="split_status_0">Pending</string>
     <string name="new_friend_sb_empty">Total amount is empty!</string>
     <string name="new_split_txt4">SHAKE TO  CREATE NEW SPLIT</string>
+    <string name="new_split_txtNombre">Shop</string>
 </resources>

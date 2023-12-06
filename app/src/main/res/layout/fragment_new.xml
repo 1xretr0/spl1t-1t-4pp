@@ -61,50 +61,84 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="105dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_layout_bg"
                 android:backgroundTint="@color/white"
                 tools:ignore="TextSizeCheck">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:paddingBottom="20dp"
+                <TextView
+                    android:id="@+id/new_split_txtNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/raleway"
+                    android:text="@string/new_split_txtNombre"
+                    android:textColor="@color/complementary"
+                    android:textSize="22sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.704"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.101" />
 
-                    <TextView
-                        android:id="@+id/new_split_txt2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/raleway"
-                        android:text="@string/new_split_txt2"
-                        android:textColor="@color/complementary"
-                        android:textSize="22sp" />
+                <EditText
+                    android:id="@+id/new_split_edt1"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="false"
+                    android:fontFamily="@font/righteous"
+                    android:inputType="text"
+                    android:shadowColor="@color/complementary"
+                    android:textAlignment="center"
+                    android:textColor="@color/complementary"
+                    android:textColorHint="#D8353535"
+                    android:textSize="28sp"
+                    android:textStyle="normal"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.824"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.739" />
 
-                    <EditText
-                        android:id="@+id/new_split_edt1"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:autofillHints="false"
-                        android:fontFamily="@font/righteous"
-                        android:hint="@string/dummy_text2"
-                        android:inputType="numberDecimal"
-                        android:shadowColor="@color/complementary"
-                        android:textAlignment="center"
-                        android:textColor="@color/complementary"
-                        android:textColorHint="#D8353535"
-                        android:textSize="40sp"
-                        android:textStyle="normal"
-                        android:visibility="visible" />
+                <EditText
+                    android:id="@+id/new_split_edt"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="false"
+                    android:fontFamily="@font/righteous"
+                    android:hint="@string/dummy_text2"
+                    android:inputType="number"
+                    android:shadowColor="@color/complementary"
+                    android:textAlignment="center"
+                    android:textColor="@color/complementary"
+                    android:textColorHint="#D8353535"
+                    android:textSize="28sp"
+                    android:textStyle="normal"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.119"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.739" />
 
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/new_split_txt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/raleway"
+                    android:text="@string/new_split_txt2"
+                    android:textColor="@color/complementary"
+                    android:textSize="22sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.182"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.101" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
