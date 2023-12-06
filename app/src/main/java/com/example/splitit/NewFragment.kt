@@ -48,15 +48,19 @@ class NewFragment : Fragment() {
         val addFriendTxt = view.findViewById<EditText>(R.id.new_split_edt2)
         val totalEdt = view.findViewById<EditText>(R.id.new_split_edt)
         var totalAmount = "0.00"
+        val storeNameEdt = view.findViewById<EditText>(R.id.new_split_edt1)
+        var storeName = ""
 
         // ADD FRIEND BUTTON LISTENER
         val addFriendBtn = view.findViewById<Button>(R.id.add_friends_btn)
         addFriendBtn.setOnClickListener {
-            println("adapter item count ${newFriendAdapter.itemCount}")
+            println("adapter item count ${addedFriendsList.size}")
 
             val newFriendName = addFriendTxt.text.toString()
             // GET TOTAL AMOUNT AT THE MOMENT
             totalAmount = totalEdt.text.toString()
+            // GET STORE NAME AT THE MOMENT
+            storeName = storeNameEdt.text.toString()
 
             if (totalAmount.isBlank() || totalAmount.isEmpty()) {
                 // Create an AlertDialog Builder
@@ -64,11 +68,28 @@ class NewFragment : Fragment() {
 
                 // Set the dialog title and message
                 builder.setTitle(R.string.new_menu_itm)
-                builder.setMessage(R.string.new_friend_sb_empty)
+                builder.setMessage(R.string.new_friend_total_empty)
 
                 builder.setNegativeButton(android.R.string.ok) { dialog, _ ->
                     dialog.cancel() // Dismiss the dialog when "Cancel" is clicked
                     totalEdt.requestFocus()
+                }
+
+                // Create and show the AlertDialog
+                val dialog = builder.create()
+                dialog.show()
+            }
+            else if (storeName.isBlank() || storeName.isEmpty()) {
+                // Create an AlertDialog Builder
+                val builder = AlertDialog.Builder(requireContext())
+
+                // Set the dialog title and message
+                builder.setTitle(R.string.new_menu_itm)
+                builder.setMessage(R.string.new_friend_storename_empty)
+
+                builder.setNegativeButton(android.R.string.ok) { dialog, _ ->
+                    dialog.cancel() // Dismiss the dialog when "Cancel" is clicked
+                    storeNameEdt.requestFocus() // focus to missing field
                 }
 
                 // Create and show the AlertDialog
@@ -111,44 +132,53 @@ class NewFragment : Fragment() {
 
         // PAY BUTTON LISTENER
         view.findViewById<Button>(R.id.button_pay).setOnClickListener {
-            if (newFriendAdapter.itemCount < 1) {
+            if (addedFriendsList.size < 1) {
+                println("here")
                 Snackbar.make(
-                    view.findViewById(android.R.id.content),
+                    requireView(),
                     R.string.new_split_pay_sb,
                     Snackbar.LENGTH_SHORT
                 ).show()
+                totalEdt.requestFocus()
             }
             else {
                 // Create an AlertDialog Builder
                 val builder = AlertDialog.Builder(requireContext())
                 if (createNewSplit(
                         loggedUser.getUserId(),
-                        "casa blanca",
-                        totalAmount,
-                        addedFriendsList))
+                        storeName,
+                        totalAmount
+                    ))
                 {
                     // Set the dialog title and message
                     builder.setTitle(R.string.new_menu_itm)
                     builder.setMessage(R.string.new_split_pay_success)
+
+                    // clear inputs
+                    totalEdt.text.clear()
+                    addFriendTxt.text.clear()
+                    newFriendAdapter.addFriendData(arrayListOf())
                 }
                 else {
                     // Set the dialog title and message
                     builder.setTitle(R.string.new_menu_itm)
                     builder.setMessage(R.string.new_split_pay_error)
                 }
-
                 // Set up the buttons for the dialog
                 builder.setPositiveButton(android.R.string.ok) { _, _ ->
                     totalEdt.text.clear()
                     addFriendTxt.text.clear()
                     newFriendAdapter.addFriendData(arrayListOf())
                 }
+                // Create and show the AlertDialog
+                val dialog = builder.create()
+                dialog.show()
             }
         }
         return view
     }
 
-    private fun createNewSplit(userId: String, storeName: String, total: String, addedFriends: ArrayList<Database.FriendRecord>): Boolean {
+    private fun createNewSplit(userId: String, storeName: String, total: String): Boolean {
         // INSERT NEW SPLIT INTO SPLITS TABLE
         val splitInsertResult = dbHelper.insertIntoSplits(
             userId,
@@ -157,14 +187,6 @@ class NewFragment : Fragment() {
             "1",
             LocalDate.now().toString()
         )
-        return splitInsertResult == -1L
-
-        // INSERT EACH SPLIT DETAIL INTO SPLIT DETAILS TABLE
-//        for (record in addedFriends) {
-//            val splitDetailInsertResult = dbHelper.insertIntoSplitDetails(
-//                splitInsertResult,
-//
-//            )
-//        }
+        return splitInsertResult != -1L
     }
 }

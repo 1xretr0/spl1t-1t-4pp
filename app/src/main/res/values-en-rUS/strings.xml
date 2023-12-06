@@ -28,7 +28,8 @@
     <string name="profile_add_failure">Friend already added or error xd!</string>
     <string name="split_status_1">Paid</string>
     <string name="split_status_0">Pending</string>
-    <string name="new_friend_sb_empty">Total amount is empty!</string>
+    <string name="new_friend_storename_empty">Store name is empty!</string>
+    <string name="new_friend_total_empty">Total amount is empty!</string>
     <string name="new_split_txt4">Shake to create a new split</string>
     <string name="new_split_pay_sb">First split between your friends</string>
     <string name="new_split_pay_error">Error creating new split</string>
