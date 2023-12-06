@@ -46,7 +46,8 @@ class NewFragment : Fragment() {
 
         val addedFriendsList = ArrayList<Database.FriendRecord>()
         val addFriendTxt = view.findViewById<EditText>(R.id.new_split_edt2)
-        val totalEdt = view.findViewById<EditText>(R.id.new_split_edt1)
+        val totalEdt = view.findViewById<EditText>(R.id.new_split_edt)
+        var totalAmount = "0.00"
 
         // ADD FRIEND BUTTON LISTENER
         val addFriendBtn = view.findViewById<Button>(R.id.add_friends_btn)
@@ -55,7 +56,7 @@ class NewFragment : Fragment() {
 
             val newFriendName = addFriendTxt.text.toString()
             // GET TOTAL AMOUNT AT THE MOMENT
-            var totalAmount = totalEdt.text.toString()
+            totalAmount = totalEdt.text.toString()
 
             if (totalAmount.isBlank() || totalAmount.isEmpty()) {
                 // Create an AlertDialog Builder
@@ -83,9 +84,6 @@ class NewFragment : Fragment() {
                     null,
                     newFriendName
                 ))
-
-                if (totalAmount.isEmpty() || totalAmount.isBlank())
-                    totalAmount = "0"
 
                 val numberOfFriends = addedFriendsList.size
                 val splitAmount = totalAmount.toFloat() / numberOfFriends
@@ -121,32 +119,45 @@ class NewFragment : Fragment() {
                 ).show()
             }
             else {
-                // TODO (call create split fun)
+                // Create an AlertDialog Builder
+                val builder = AlertDialog.Builder(requireContext())
+                if (createNewSplit(
+                        loggedUser.getUserId(),
+                        "casa blanca",
+                        totalAmount,
+                        addedFriendsList))
+                {
+                    // Set the dialog title and message
+                    builder.setTitle(R.string.new_menu_itm)
+                    builder.setMessage(R.string.new_split_pay_success)
+                }
+                else {
+                    // Set the dialog title and message
+                    builder.setTitle(R.string.new_menu_itm)
+                    builder.setMessage(R.string.new_split_pay_error)
+                }
+
+                // Set up the buttons for the dialog
+                builder.setPositiveButton(android.R.string.ok) { _, _ ->
+                    totalEdt.text.clear()
+                    addFriendTxt.text.clear()
+                    newFriendAdapter.addFriendData(arrayListOf())
+                }
             }
         }
-
         return view
     }
 
-    private fun createNewSplit(userId: String, storeName: String, total: Float, addedFriends: ArrayList<Database.FriendRecord>): Boolean {
+    private fun createNewSplit(userId: String, storeName: String, total: String, addedFriends: ArrayList<Database.FriendRecord>): Boolean {
         // INSERT NEW SPLIT INTO SPLITS TABLE
         val splitInsertResult = dbHelper.insertIntoSplits(
             userId,
             storeName,
-            total.toString(),
+            total,
             "1",
             LocalDate.now().toString()
         )
-        // VALIDATE RESULT TO CONTINUE
-        if (splitInsertResult == -1L) {
-            Snackbar.make(
-                requireView(),
-                getString(R.string.new_split_pay_db_error),
-                Snackbar.LENGTH_SHORT
-            ).show()
-            return false
-        }
-        return true
+        return splitInsertResult == -1L
 
         // INSERT EACH SPLIT DETAIL INTO SPLIT DETAILS TABLE
 //        for (record in addedFriends) {
