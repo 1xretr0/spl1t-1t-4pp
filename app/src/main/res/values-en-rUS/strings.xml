@@ -35,4 +35,6 @@
     <string name="new_split_pay_error">Error creating new split</string>
     <string name="new_split_txtNombre">Shop</string>
     <string name="new_split_pay_success">Split was paid successfully!</string>
+    <string name="add_friend_ID">Enter your friend\'s ID</string>
+    <string name="store_dummy_text">Pizza</string>
 </resources>

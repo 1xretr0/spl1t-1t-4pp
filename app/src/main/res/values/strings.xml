@@ -41,4 +41,6 @@
     <string name="new_split_txtNombre">Tienda</string>
     <string name="new_split_pay_success">Split pagado con éxito!</string>
     <string name="new_friend_storename_empty">Nombre de la tienda vacío!</string>
+    <string name="add_friend_ID">Ingresa el ID de tu amigo</string>
+    <string name="store_dummy_text">Pizza</string>
 </resources>

@@ -89,12 +89,12 @@
                     android:autofillHints="false"
                     android:capitalize="words"
                     android:fontFamily="@font/righteous"
-                    android:hint="@string/dummy_text"
+                    android:hint="@string/store_dummy_text"
                     android:inputType="text"
                     android:shadowColor="@color/complementary"
                     android:textAlignment="center"
                     android:textColor="@color/complementary"
-                    android:textColorHint="#D8353535"
+                    android:textColorHint="#9F353535"
                     android:textSize="28sp"
                     android:textStyle="normal"
                     android:visibility="visible"
@@ -206,7 +206,7 @@
             android:id="@+id/button_pay"
             android:layout_width="353dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="640dp"
+            android:layout_marginTop="40dp"
             android:backgroundTint="@color/secondary_blue"
             android:fontFamily="@font/righteous"
             android:paddingTop="12dp"
@@ -217,7 +217,7 @@
             app:cornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
