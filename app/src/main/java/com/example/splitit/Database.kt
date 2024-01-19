@@ -29,6 +29,12 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         usersCV.put(PASSWORD, "everlong123")
         db.insert("si_users", NAME, usersCV)
 
+        usersCV.put(NAME, "Mauricio")
+        usersCV.put(LASTNAME, "Gallegos Arroyo")
+        usersCV.put(EMAIL, "mauricio.gallegos@gmail.com")
+        usersCV.put(PASSWORD, "mau1187")
+        db.insert("si_users", NAME, usersCV)
+
         // CREATE FRIENDS TABLE
         db.execSQL("CREATE TABLE si_friends(id_friend integer primary key autoincrement, id_user1 int, id_user2 int, FOREIGN KEY (id_user1) REFERENCES si_users(id), FOREIGN KEY (id_user2) REFERENCES si_users(id))")
 
